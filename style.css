@@ -1,0 +1,141 @@
+/* -----------------------------
+  Phoenix Group — style.css
+  Save as style.css
+------------------------------*/
+
+/* ========== VARIABLES ========== */
+:root{
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --red-500: #ef4444;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --purple-500: #8b5cf6;
+  --black: #000;
+  --white: #fff;
+
+  --shadow-strong: 0 0 50px rgba(251,146,60,0.4);
+  --shadow-mid: 0 0 30px rgba(251,146,60,0.3);
+  --shadow-soft: 0 0 20px rgba(251,146,60,0.2);
+}
+
+/* ========== RESET ========== */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Arial,sans-serif;background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ========== SPLASH ========== */
+.splash{
+  position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s ease,visibility .6s;
+}
+.logo_container{transform:translateY(-100vh);opacity:0;text-align:center;animation:slideDown 1.2s cubic-bezier(.34,1.56,.64,1) forwards .1s}
+.logo_icon{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--orange-500),var(--red-500));box-shadow:0 8px 40px rgba(247,110,40,0.35)}
+.logo_inner{font-weight:900;color:var(--black);font-size:28px}
+.logo_container h2{color:var(--white);margin:18px 0 8px}
+.socials{display:flex;gap:12px;justify-content:center}
+.socials a{width:34px;height:34px;border-radius:50%;background:var(--white);color:#000;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+
+/* slideDown keyframes */
+@keyframes slideDown{from{transform:translateY(-100vh);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* hide splash when removed (script will add .hidden) */
+.splash.hidden{opacity:0;visibility:hidden;pointer-events:none}
+
+/* ========== HEADER ========== */
+.site-header{
+  position:fixed;top:0;left:0;right:0;height:68px;display:flex;align-items:center;z-index:60;background:rgba(0,0,0,0.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(251,146,60,0.12)
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;background:linear-gradient(90deg,var(--orange-400),var(--red-500),var(--amber-400));-webkit-background-clip:text;color:transparent;}
+.nav a{color:rgba(255,255,255,0.85);margin-left:20px;text-decoration:none;padding:8px 4px;border-radius:6px;transition:all .18s}
+.nav a:hover{color:var(--orange-400);text-shadow:0 0 10px rgba(251,146,60,0.6)}
+
+/* ========== HERO (3-layer background) ========== */
+.hero{
+  padding-top:88px;min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden
+}
+
+/* three layer background combined */
+.hero-bg{
+  background:
+    radial-gradient(circle at 70% 50%, rgba(139,92,246,0.10), transparent 55%),
+    radial-gradient(circle at 30% 50%, rgba(251,146,60,0.15), transparent 55%),
+    linear-gradient(to bottom right, rgba(124,45,18,0.25), rgba(153,27,27,0.25), #000);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+/* HERO GRID */
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:80px 0;position:relative;z-index:2}
+
+/* LEFT */
+.typing-container{display:flex;align-items:center;gap:8px}
+.typing-text{font-weight:700;font-size:28px;line-height:1;color:transparent;background:linear-gradient(90deg,var(--orange-400),var(--red-500),var(--amber-400));-webkit-background-clip:text}
+.cursor{font-weight:700;color:var(--amber-400);text-shadow:0 0 8px rgba(251,191,36,0.6);animation:blink 0.6s infinite}
+@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+
+.hero-title{font-size:48px;margin:10px 0 14px;line-height:1.02;font-weight:900}
+.gradient-text{background:linear-gradient(90deg,var(--orange-400),var(--red-500),var(--amber-400));-webkit-background-clip:text;color:transparent}
+.hero-desc{color:rgba(255,255,255,0.72);max-width:540px}
+
+/* buttons */
+.hero-cta{margin-top:20px;display:flex;gap:14px}
+.btn{cursor:pointer;padding:14px 26px;border-radius:10px;font-weight:700;border:0}
+.btn-primary{background:linear-gradient(90deg,var(--orange-500),var(--red-500),var(--amber-500));color:#fff;box-shadow:var(--shadow-strong);transition:transform .18s,box-shadow .18s}
+.btn-primary:hover{transform:scale(1.03);box-shadow:0 0 35px rgba(251,146,60,0.6)}
+.btn-outline{background:transparent;border:1px solid rgba(251,146,60,0.45);color:var(--orange-400);padding:12px 22px}
+
+/* RIGHT image box */
+.image-wrapper{display:flex;align-items:center;justify-content:center;position:relative}
+.image-box{width:320px;height:320px;border-radius:18px;overflow:hidden;position:relative;border:2px solid rgba(251,146,60,0.45);box-shadow:var(--shadow-strong);display:flex;align-items:center;justify-content:center;background:linear-gradient(to bottom right, rgba(124,45,18,0.5), rgba(127,29,29,0.45), rgba(120,53,15,0.45))}
+.image-box .inner-fire{font-size:88px;filter:drop-shadow(0 8px 30px rgba(247,110,40,0.35));z-index:2}
+.image-box::before{content:"";position:absolute;inset:-20px;background:linear-gradient(90deg, rgba(251,146,60,0.35), rgba(239,68,68,0.35), rgba(251,191,36,0.35));filter:blur(40px);z-index:1}
+
+/* ember particles */
+.ember{position:absolute;border-radius:50%;background:var(--orange-400);width:8px;height:8px;filter:blur(1px);opacity:0;animation:emberUp 3.6s infinite}
+.ember.e1{top:22%;right:12%;animation-delay:0s}
+.ember.e2{top:50%;left:6%;animation-delay:0.6s;background:var(--red-500)}
+.ember.e3{top:48%;right:28%;animation-delay:1.2s;background:var(--amber-400);width:6px;height:6px}
+@keyframes emberUp{0%{transform:translateY(0);opacity:1}70%{opacity:1}100%{transform:translateY(-90px);opacity:0}}
+
+/* ========== ABOUT ========== */
+.about{padding:80px 0;position:relative}
+.section-title{font-size:40px;text-align:center;margin-bottom:28px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:rgba(255,255,255,0.03);padding:28px;border-radius:14px;border:1px solid rgba(251,146,60,0.08);backdrop-filter:blur(6px);transition:all .28s;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-mid);border-color:rgba(251,146,60,0.2)}
+.card-icon{font-size:36px;margin-bottom:12px;color:var(--orange-400)}
+.card h3{margin:6px 0 8px}
+
+/* ========== PROJECTS ========== */
+.projects{padding:80px 0;background:linear-gradient(180deg, transparent 0, rgba(0,0,0,0.02) 100%)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.project-card{background:rgba(255,255,255,0.03);border-radius:14px;overflow:hidden;border:1px solid rgba(251,146,60,0.06);transition:all .28s;display:flex;flex-direction:column}
+.project-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-mid);border-color:rgba(251,146,60,0.18)}
+.thumb{height:150px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(251,146,60,0.18), rgba(127,29,29,0.12));font-size:48px}
+.project-body{padding:18px}
+.project-body h4{color:var(--orange-400);margin:0 0 8px}
+.project-body p{color:rgba(255,255,255,0.7);margin:0 0 12px}
+.learn{color:var(--orange-400);text-decoration:none;font-weight:700}
+
+/* ========== CONTACT ========== */
+.contact{padding:80px 0;text-align:center}
+.contact .center{max-width:720px;margin:0 auto;color:rgba(255,255,255,0.72)}
+/* ========== FOOTER ========== */
+.site-footer{padding:28px 0;border-top:1px solid rgba(251,146,60,0.12);text-align:center;color:rgba(255,255,255,0.5)}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:34px;padding:40px 0}
+  .cards{grid-template-columns:1fr;max-width:600px;margin:0 auto}
+  .projects-grid{grid-template-columns:1fr;max-width:700px;margin:0 auto}
+  .image-box{width:300px;height:300px}
+}
+@media (max-width:460px){
+  .image-box{width:240px;height:240px}
+  .hero-title{font-size:34px}
+  .typing-text{font-size:18px}
+}
+img{width: 380px; height:350px;}
+.icon{width:34px;height:34px;border-radius:50%;}
